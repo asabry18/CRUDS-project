@@ -21,7 +21,7 @@ function totalprice(){
 }
 
 let arr = []
-if (localStorage.products != '' && localStorage.products !== undefined && JSON.parse(localStorage.products).length > 0) {
+if (JSON.parse(localStorage.products).length > 0) {
     arr=JSON.parse(localStorage.products)
     deleteall.style.display='block'
 }
@@ -33,16 +33,24 @@ else
 submit.onclick= function(){
     let newproduct = {
         title: title.value,
-        price:price.value,
-        taxes:price.value,
-        ads:ads.value,
-        discount:discount.value,
-        total:total.innerHTML,
-        count:count.value,
-        category:category.value
+        price: price.value,
+        taxes: price.value,
+        ads: ads.value,
+        discount: discount.value,
+        total: total.innerHTML,
+        count: count.value,
+        category: category.value
     }
-    arr.push(newproduct)
-    localStorage.products = JSON.stringify(arr)
+    if(count.value>=1){
+        for (let index = 0; index < count.value; index++) {
+            arr.push(newproduct)
+            localStorage.products = JSON.stringify(arr)
+        }
+    }
+    else{
+        arr.push(newproduct)
+        localStorage.products = JSON.stringify(arr)
+    }
     deleteall.style.display ='block'
     clear()
     show()
@@ -54,7 +62,7 @@ function clear(){
     taxes.value=''
     ads.value=''
     discount.value=''
-    total.value=''
+    total.innerHTML=''
     count.value=''
     category.value=''
 }
