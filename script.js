@@ -21,7 +21,6 @@ function totalprice(){
 }
 
 let arr = []
-console.log(localStorage.products.length);
 if (localStorage.products != '' && localStorage.products !== undefined && JSON.parse(localStorage.products).length > 0) {
     arr=JSON.parse(localStorage.products)
     deleteall.style.display='block'
@@ -33,7 +32,7 @@ else
 
 submit.onclick= function(){
     let newproduct = {
-        title:title.value,
+        title: title.value,
         price:price.value,
         taxes:price.value,
         ads:ads.value,
@@ -43,8 +42,8 @@ submit.onclick= function(){
         category:category.value
     }
     arr.push(newproduct)
-    localStorage.products= JSON.stringify(arr)
-    deleteall.style.display='block'
+    localStorage.products = JSON.stringify(arr)
+    deleteall.style.display ='block'
     clear()
     show()
 }
@@ -74,17 +73,22 @@ function show(){
             <td>${arr[i].total}</td>
             <td>${arr[i].category}</td>
             <td><button class="btn btn-primary py-0">Update</button></td>
-            <td><button class="btn btn-primary py-0">Delete</button></td>
+            <td><button onclick="removeitem(${i})" class="btn btn-primary py-0">Delete</button></td>
         </tr>
     `
     }
-    table.innerHTML=tabledata
+    table.innerHTML = tabledata
 }
 show()
 
 function removeall(){
-    localStorage.products=JSON.stringify([])
-    deleteall.style.display='none'
-    table.innerHTML=''
     arr = [];
+    localStorage.products=JSON.stringify(arr)
+    deleteall.style.display='none'
+    show()
+}
+function removeitem(index){
+    arr.splice(index,1)
+    localStorage.products=JSON.stringify(arr)
+    show()
 }
