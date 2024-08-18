@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body class="bg-dark text-light">
+    <div class="container pb-4">
+        <div class="title text-center pt-4 text-uppercase text-light">
+            <h2>cruds</h2>
+            <h5>product management system</h5>
+        </div>
+        <div class="inputs">
+            <input type="text" placeholder="name" class="w-100 text-light" id="title">
+            <div class="prices">
+                <input onkeyup="totalprice()" type="number" placeholder="price" class="text-light" id="price">
+                <input onkeyup="totalprice()" type="number" placeholder="taxes" class="text-light" id="taxes">
+                <input onkeyup="totalprice()" type="number" placeholder="ads" class="text-light" id="ads">
+                <input onkeyup="totalprice()" type="number" placeholder="discount" class="text-light" id="discount">
+                <span class="text-light bg-success" id="total"></span>
+            </div>
+            <input type="number" placeholder="count" class="w-100 text-light" id="count">
+            <input type="text" placeholder="category" class="w-100 text-light" id="category">
+            <button class="btn btn-primary w-100" id="create"> Create</button>
+        </div>
+        <div class="output">
+            <input type="text" placeholder="Search" class="w-100 text-light">
+            <div class="way d-flex">
+                <button class="btn btn-primary w-50 me-2">Search by name</button>
+                <button class="btn btn-primary w-50 ms-2">Search by category</button>      
+            </div>
+            <button onclick="removeall()" class="btn btn-primary w-100" id="deleteall" style="display: none;">Delete all</button>
+        </div>
+        <table class="w-100 text-center">
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>PRICE</th>
+                <th>TAXES</th>
+                <th>ADS</th>
+                <th>DISCOUNT</th>
+                <th>TOTAL</th>
+                <th>CATEGORY</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+            </tr>
+            <tbody id="table">
+                
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
