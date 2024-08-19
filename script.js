@@ -41,16 +41,22 @@ submit.onclick= function(){
         count: count.value,
         category: category.value
     }
-    if(count.value>=1){
-        for (let index = 0; index < count.value; index++) {
+    if(submit.innerHTML==='Create'){
+        if(count.value>=1){
+            for (let index = 0; index < count.value; index++) {
+                arr.push(newproduct)
+            }
+        }
+        else{
             arr.push(newproduct)
-            localStorage.products = JSON.stringify(arr)
         }
     }
     else{
-        arr.push(newproduct)
-        localStorage.products = JSON.stringify(arr)
+        arr[x]=newproduct
+        submit.innerHTML='Create'
+        count.style.display='block'
     }
+    localStorage.products = JSON.stringify(arr)
     deleteall.style.display ='block'
     clear()
     show()
@@ -80,7 +86,7 @@ function show(){
             <td>${arr[i].discount}</td>
             <td>${arr[i].total}</td>
             <td>${arr[i].category}</td>
-            <td><button class="btn btn-primary py-0">Update</button></td>
+            <td><button onclick="updateitem(${i})" class="btn btn-primary py-0">Update</button></td>
             <td><button onclick="removeitem(${i})" class="btn btn-primary py-0">Delete</button></td>
         </tr>
     `
@@ -99,4 +105,19 @@ function removeitem(index){
     arr.splice(index,1)
     localStorage.products=JSON.stringify(arr)
     show()
+}
+
+let x
+function updateitem(index){
+    title.value=arr[index].title
+    price.value=arr[index].price
+    taxes.value=arr[index].taxes
+    ads.value=arr[index].ads
+    discount.value=arr[index].discount
+    total.innerHTML=arr[index].total
+    count.style.display='none'
+    category.value=arr[index].category
+    submit.innerHTML='Update'
+    x=index
+    scrollTo(0,0)
 }
