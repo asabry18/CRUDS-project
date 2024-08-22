@@ -28,10 +28,10 @@
             <button class="btn btn-primary w-100" id="create"> Create</button>
         </div>
         <div class="output">
-            <input type="text" placeholder="Search" class="w-100 text-light">
+            <input id="searchbar" type="text" placeholder="Search" class="w-100 text-light">
             <div class="way d-flex">
-                <button class="btn btn-primary w-50 me-2">Search by name</button>
-                <button class="btn btn-primary w-50 ms-2">Search by category</button>      
+                <button onclick="searchByName()" id="byname" class="btn btn-primary w-50 me-2">Search by name</button>
+                <button onclick="searchByCategory()" id="bycategory" class="btn btn-primary w-50 ms-2">Search by category</button>      
             </div>
             <button onclick="removeall()" class="btn btn-primary w-100" id="deleteall" style="display: none;">Delete all</button>
         </div>
